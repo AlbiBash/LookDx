@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useBasket } from "@/lib/basket";
-import { getKit, priceText } from "@/lib/kits";
+import { getKit, gbp } from "@/lib/kits";
 import { submitOrder } from "@/lib/orders";
 
 type Done = { orderNumber: string; email: string };
@@ -17,7 +17,7 @@ export function BasketView() {
     const k = getKit(i.slug);
     return k ? [{ ...i, kit: k }] : [];
   });
-  const total = lines.reduce((s, l) => s + (l.kit.price ?? 0) * l.qty, 0);
+  const total = lines.reduce((s, l) => s + l.kit.price * l.qty, 0);
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -74,12 +74,12 @@ export function BasketView() {
                 <span aria-live="polite">{l.qty}</span>
                 <button aria-label={`Increase ${l.kit.name}`} onClick={() => setQty(l.slug, l.qty + 1)}>+</button>
               </div>
-              <div className="price">{l.kit.price === null ? "On request" : priceText(l.kit.price * l.qty)}</div>
+              <div className="price">{gbp(l.kit.price * l.qty)}</div>
               <button className="ul small" onClick={() => remove(l.slug)}>Remove</button>
             </li>
           ))}
         </ul>
-        <p className="total"><span className="caps">Estimated total (ex. VAT & shipping)</span><strong>{priceText(total)}</strong></p>
+        <p className="total"><span className="caps">Estimated total (ex. VAT & shipping)</span><strong>{gbp(total)}</strong></p>
         <p className="small muted">Basket is saved in this browser for 30 days. Prices are confirmed by our server when you submit.</p>
       </section>
 

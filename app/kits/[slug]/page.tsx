@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getKit, priceText, kits } from "@/lib/kits";
+import { getKit, gbp, kits } from "@/lib/kits";
 import { KitChart } from "@/components/KitChart";
 import { AddToQuote } from "@/components/AddToQuote";
 import { InfoBar } from "@/components/InfoBar";
@@ -23,7 +23,7 @@ export default async function KitPage({ params }: { params: Promise<{ slug: stri
     <main id="main">
       <InfoBar
         items={[
-          <span key="b"><Link href="/kits" className="ul">Kits</Link> / <Link href="/kits" className="ul">{kit.application}</Link></span>,
+          <span key="b"><Link href="/kits" className="ul">Kits</Link> / <Link href="/kits" className="ul">Genotyping</Link></span>,
           kit.code,
           kit.format,
           <span className="accent-text" key="s">[{kit.status} / IVD STATUS]</span>,
@@ -38,8 +38,8 @@ export default async function KitPage({ params }: { params: Promise<{ slug: stri
               <label className="field"><span className="caps">Pack size</span>
                 <select defaultValue={kit.packSize}><option>{kit.packSize}</option></select>
               </label>
-              <p className="price-row"><span className="caps">Price</span><strong>{priceText(kit.price)}</strong></p>
-              <AddToQuote slug={kit.slug} label={kit.price === null ? "Request a quote" : "Add to quote"} />
+              <p className="price-row"><span className="caps">Price</span><strong>{gbp(kit.price)}</strong></p>
+              <AddToQuote slug={kit.slug} />
               <p><a href="#" className="ul small">Buy through a distributor</a></p>
             </div>
             <h2 className="caps docs-h">Documents</h2>
@@ -59,10 +59,10 @@ export default async function KitPage({ params }: { params: Promise<{ slug: stri
           <h2 className="caps">01 — Specification</h2>
           <div className="spec-grid">
             <div>
-              <h3 className="h3">{kit.callsTitle}</h3>
+              <h3 className="h3">Genotype calls</h3>
               <table className="table">
-                <thead><tr><th>Call</th><th>Tm °C</th><th>Shape</th></tr></thead>
-                <tbody>{kit.series.map((g) => <tr key={g.id}><th scope="row">{g.label}</th><td>{g.tmText}</td><td>{g.shape}</td></tr>)}</tbody>
+                <thead><tr><th>Genotype</th><th>Tm °C</th><th>Shape</th></tr></thead>
+                <tbody>{kit.genotypes.map((g) => <tr key={g.id}><th scope="row">{g.id === "hom" ? "Hom. variant" : g.label}</th><td>{g.tmText}</td><td>{g.shape}</td></tr>)}</tbody>
               </table>
             </div>
             <div>

@@ -31,7 +31,7 @@ export function submitOrder(input: OrderInput): OrderResult {
   const items = input.items.slice(0, 50).flatMap((i) => {
     const kit = getKit(String(i.slug));
     const qty = Math.floor(Number(i.qty));
-    return kit && qty >= 1 && qty <= 99 ? [{ qty, unitPrice: kit.price ?? 0 }] : [];
+    return kit && qty >= 1 && qty <= 99 ? [{ qty, unitPrice: kit.price }] : [];
   });
   if (items.length === 0) return { ok: false, error: "Your basket is empty." };
 

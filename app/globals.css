@@ -88,13 +88,12 @@ ul, ol { list-style: none; }
 .toggle { display: inline-flex; border: 1.5px solid var(--ink); }
 .toggle button { padding: 7px 14px; font-size: 12px; font-weight: 700; }
 .toggle button[aria-pressed="true"] { background: var(--ink); color: #fff; }
-.legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); border: 1px solid var(--ink); margin-top: 18px; }
+.legend { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--ink); margin-top: 18px; }
 .legend li { padding: 8px 10px; display: flex; flex-direction: column; gap: 2px; border-right: 1px solid var(--ink); font-size: 12px; }
 .legend li:last-child { border-right: 0; }
 .legend small { color: var(--grey); font-size: 11px; }
 .swatch { display: inline-block; width: 18px; height: 0; border-top: 3px solid var(--ink); margin-bottom: 4px; }
 .swatch.accent { border-color: var(--accent); }
-.swatch.grey { border-color: var(--grey-line); }
 .swatch.dashed { border-top-style: dashed; }
 
 /* kit finder */
@@ -157,16 +156,6 @@ textarea { resize: vertical; border: 1.5px solid var(--ink); padding: 8px; }
 .total { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0 8px; }
 .total strong { font-size: 32px; font-weight: 800; letter-spacing: -0.05em; }
 
-/* custom design band */
-.band { background: var(--accent); color: var(--ink); margin-top: 72px; padding: 14px 0 56px; border-top: 1.5px solid var(--ink); }
-.band .ticks li { border-bottom-color: rgba(14, 14, 14, .35); }
-.band .ticks li::before { background: var(--ink); }
-.band input, .band textarea { border-color: var(--ink); background: rgba(255, 255, 255, .22); }
-.band input::placeholder, .band textarea::placeholder { color: rgba(14, 14, 14, .62); }
-.band .btn-ink:hover { background: var(--paper); color: var(--ink); }
-.band :focus-visible { outline-color: var(--ink); box-shadow: 0 0 0 5px var(--paper); }
-.band .note { background: var(--paper); }
-
 /* footer */
 .site-footer { margin-top: 96px; border-top: 1.5px solid var(--ink); padding: 32px 0 40px; }
 .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 28px; }
@@ -193,4 +182,3 @@ textarea { resize: vertical; border: 1.5px solid var(--ink); padding: 8px; }
   .stats { grid-template-columns: 1fr 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
-main:has(> .band:last-child) + .site-footer { margin-top: 0; }
