@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useBasket } from "@/lib/basket";
 import { getKit, gbp } from "@/lib/kits";
+import { submitOrder } from "@/lib/orders";
 
 type Done = { orderNumber: string; email: string };
 
@@ -24,18 +25,13 @@ export function BasketView() {
     setError(null);
     const f = new FormData(e.currentTarget);
     try {
-      const res = await fetch("/api/orders", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          items: items.map(({ slug, qty }) => ({ slug, qty })),
-          contact: Object.fromEntries(f.entries()),
-        }),
+      const result = submitOrder({
+        items: items.map(({ slug, qty }) => ({ slug, qty })),
+        contact: Object.fromEntries(f.entries()),
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "Something went wrong");
+      if (!result.ok) throw new Error(result.error);
       clear();
-      setDone({ orderNumber: data.orderNumber, email: String(f.get("email")) });
+      setDone({ orderNumber: result.orderNumber, email: String(f.get("email")) });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");
     } finally {
