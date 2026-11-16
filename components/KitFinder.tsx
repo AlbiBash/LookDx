@@ -12,16 +12,16 @@ export function KitFinder() {
 
   const apps = ["All", ...Array.from(new Set(kits.map((k) => k.application)))];
   const insts = ["Any", ...Array.from(new Set(kits.flatMap((k) => k.instruments.map((i) => i.name))))];
-  const plexes = ["Any", ...Array.from(new Set(kits.map((k) => k.plexLabel)))];
+  const plexes = ["Any", ...Array.from(new Set(kits.map((k) => k.plexLabel))).filter((p) => p !== "Any"), "Custom (any plex)"];
 
   const shown = useMemo(
     () =>
       kits.filter(
         (k) =>
-          (!q || `${k.target} ${k.variant} ${k.name}`.toLowerCase().includes(q.toLowerCase())) &&
+          (!q || `${k.short} ${k.name} ${k.summary} ${k.application}`.toLowerCase().includes(q.toLowerCase())) &&
           (app === "All" || k.application === app) &&
           (inst === "Any" || k.instruments.some((i) => i.name === inst)) &&
-          (plex === "Any" || k.plexLabel === plex),
+          (plex === "Any" || k.plexLabel === plex || (plex === "Custom (any plex)" && k.plexLabel === "Any")),
       ),
     [q, app, inst, plex],
   );
@@ -31,7 +31,7 @@ export function KitFinder() {
       <div className="filters">
         <label>
           <span className="caps">Target or gene</span>
-          <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="e.g. F5, HFE" />
+          <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="e.g. SNP, pathogen" />
         </label>
         <label>
           <span className="caps">Application</span>
@@ -54,8 +54,8 @@ export function KitFinder() {
             <li key={k.slug}>
               <Link href={`/kits/${k.slug}`} className="kit-card">
                 <div className="kit-meta caps"><span>{String(i + 1).padStart(2, "0")}</span><span>{k.plexLabel}</span></div>
-                <MiniCurve peaks={k.genotypes.flatMap((g) => g.peaks).slice(0, 4)} />
-                <h3>{k.target} — {k.variant}</h3>
+                <MiniCurve peaks={k.cardPeaks} />
+                <h3>{k.short}</h3>
                 <p className="muted">{k.summary}</p>
                 <p className="small muted code">{k.code} · [{k.status}]</p>
               </Link>

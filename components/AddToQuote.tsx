@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useBasket } from "@/lib/basket";
 
-export function AddToQuote({ slug }: { slug: string }) {
+export function AddToQuote({ slug, label = "Add to quote" }: { slug: string; label?: string }) {
   const { add } = useBasket();
   const [added, setAdded] = useState(false);
   return (
@@ -15,7 +15,7 @@ export function AddToQuote({ slug }: { slug: string }) {
           setAdded(true);
         }}
       >
-        <span>{added ? "Added to quote" : "Add to quote"}</span>
+        <span>{added ? "Added to quote" : label}</span>
         <span aria-hidden>→</span>
       </button>
       {added && (

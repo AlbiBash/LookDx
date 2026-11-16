@@ -77,8 +77,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="wrap section" id="custom">
-        <div className="section-grid">
+      <section className="band" id="custom">
+        <div className="wrap section-grid">
           <h2 className="caps">04 — Custom design</h2>
           <div className="custom-grid">
             <div>
