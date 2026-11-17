@@ -43,7 +43,7 @@ export function ChartSvg({
           </g>
         );
       })}
-      <line x1={0} x2={W} y1={H} y2={H} stroke="var(--ink)" strokeWidth={1.5} />
+      <line x1={0} x2={W} y1={H} y2={H} stroke="var(--grey-line)" strokeWidth={1} />
       {lines.map((l) => {
         const dim = active !== null && active !== l.id;
         return (
@@ -52,8 +52,8 @@ export function ChartSvg({
             d={pathFor(l.gauss, W, H - 2, mode, tMin, tMax)}
             fill="none"
             stroke={stroke(l.style)}
-            strokeWidth={l.style === "accent" ? 3 : 2.4}
-            strokeDasharray={l.style === "dashed" ? "5 4" : undefined}
+            strokeWidth={2}
+            strokeDasharray={l.style === "dashed" ? "3 4" : undefined}
             opacity={dim ? 0.15 : 1}
             vectorEffect="non-scaling-stroke"
             className="curve"

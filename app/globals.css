@@ -6,9 +6,9 @@
   --grey-light: #b4b4b4;
   --rule-soft: #d9d9d9;
   --accent: #dbfb5b;
-  --accent-line: #8fb300; /* lime as a curve/line colour on white */
+  --accent-line: #aad400; /* lime as a curve/line colour on white */
   --purple: #c9aad6;
-  --purple-line: #8a4fa6;
+  --purple-line: #b063cc;
   --accent-ink: #000000;
   --max: 1344px;
   --gut: clamp(16px, 4vw, 48px);
@@ -83,7 +83,7 @@ ul, ol { list-style: none; }
 .figure { margin: 0; min-width: 0; }
 .fig-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding-bottom: 8px; margin-bottom: 8px; }
 .chart-svg { display: block; width: 100%; height: clamp(240px, 30vw, 385px); overflow: visible; }
-.chart-svg .grid { stroke: var(--rule-soft); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.chart-svg .grid { stroke: #ececec; stroke-width: 1; vector-effect: non-scaling-stroke; }
 .chart-svg .tick { font-size: 11px; fill: var(--grey); }
 .curve { transition: opacity .2s; }
 .axis-label { margin-top: 8px; }
@@ -117,10 +117,11 @@ ul, ol { list-style: none; }
 .filters .caps { color: var(--grey); }
 input::placeholder { color: #afafaf; }
 input, select, textarea { width: 100%; border: 0; border-bottom: 1px solid var(--ink); border-radius: 0; background: transparent; padding: 6px 0; }
-select { appearance: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='14' fill='none' stroke='%23363639' stroke-width='1.4'%3E%3Cpath d='M1 5l4-4 4 4M1 9l4 4 4-4'/%3E%3C/svg%3E") right center no-repeat; padding-right: 20px; }
+select { appearance: none; border-radius: 0; }
 textarea { resize: vertical; border: 1px solid var(--ink); padding: 8px; }
 .kit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 32px; }
 .kit-card { display: block; padding: 0 0 32px; margin-bottom: 32px; border-bottom: 1px solid var(--rule-soft); }
+.kit-grid li:nth-last-child(-n+3) .kit-card { border-bottom: 0; margin-bottom: 0; }
 .kit-card:hover h3 { text-decoration: underline; text-decoration-color: var(--accent-line); text-decoration-thickness: 3px; text-underline-offset: 4px; }
 .kit-meta { display: flex; justify-content: space-between; font-size: 12px; text-transform: none; letter-spacing: 0; }
 .kit-meta span:last-child { font-weight: 400; color: var(--grey); }

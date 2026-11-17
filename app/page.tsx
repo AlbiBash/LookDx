@@ -54,7 +54,6 @@ export default function Home() {
           <ol className="steps">
             {steps.map((s) => (
               <li key={s.n}>
-                <span className="step-n">{s.n}</span>
                 <h3>{s.t}</h3>
                 <p className="muted">{s.d}</p>
               </li>

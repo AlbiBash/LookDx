@@ -11,9 +11,8 @@ export function MiniCurve({ peaks, tone = "ink", className }: { peaks: Peak[]; t
   const c = colour[tone];
   return (
     <svg viewBox="0 0 200 56" className={className ?? "mini"} aria-hidden preserveAspectRatio="none">
-      <path d={`${d} L200,54 L0,54 Z`} fill={c} opacity={0.14} />
-      <line x1={0} x2={200} y1={55} y2={55} stroke="var(--ink)" strokeWidth={1} vectorEffect="non-scaling-stroke" />
-      <path d={d} fill="none" stroke={c} strokeWidth={2.4} strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+      <line x1={0} x2={200} y1={55} y2={55} stroke={tone === "ink" ? "var(--grey-line)" : c} strokeWidth={1} vectorEffect="non-scaling-stroke" />
+      <path d={d} fill="none" stroke={c} strokeWidth={1.8} strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
     </svg>
   );
 }

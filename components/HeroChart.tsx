@@ -13,8 +13,6 @@ export function HeroChart() {
   const [active, setActive] = useState<string | null>(null);
   const sel = heroTargets.find((t) => t.id === active);
   const tms = heroTargets.map((t) => t.tm);
-  const gapOf = (tm: number) => Math.min(...tms.filter((x) => x !== tm).map((x) => Math.abs(x - tm)));
-  const minGap = Math.min(...heroTargets.map((t) => gapOf(t.tm)));
 
   return (
     <figure className="figure">
@@ -42,10 +40,6 @@ export function HeroChart() {
         <div>
           <dt className="caps">Tm</dt>
           <dd>{sel ? `${sel.tm} °C` : `${Math.min(...tms)}–${Math.max(...tms)}`}</dd>
-        </div>
-        <div>
-          <dt className="caps">ΔTm to nearest</dt>
-          <dd className="hl">{(sel ? gapOf(sel.tm) : minGap).toFixed(1)} °C</dd>
         </div>
       </dl>
     </figure>

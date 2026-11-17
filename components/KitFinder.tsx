@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { kits } from "@/lib/kits";
 import { MiniCurve, type Tone } from "./MiniCurve";
 
-const tones: Tone[] = ["lime", "purple", "ink"];
+const toneFor = (i: number): Tone => (i === 0 ? "lime" : i === 1 ? "purple" : "ink");
 
 export function KitFinder() {
   const [q, setQ] = useState("");
@@ -56,7 +56,7 @@ export function KitFinder() {
             <li key={k.slug}>
               <Link href={`/kits/${k.slug}`} className="kit-card">
                 <div className="kit-meta caps"><span>{String(i + 1).padStart(2, "0")}</span><span>{k.plexLabel}</span></div>
-                <MiniCurve peaks={k.cardPeaks} tone={tones[i % tones.length]} />
+                <MiniCurve peaks={k.cardPeaks} tone={toneFor(i)} />
                 <h3>{k.short}</h3>
                 <p className="muted">{k.summary}</p>
                 <p className="small muted code">{k.code} · [{k.status}]</p>
