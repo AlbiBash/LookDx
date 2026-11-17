@@ -83,16 +83,16 @@ export default function Home() {
       <section className="band" id="custom">
         <div className="wrap section-grid">
           <h2 className="caps">04  |  Custom design</h2>
-          <div className="custom-grid">
-            <div>
-              <h2 className="h1">Send a sequence.<br />Get back a melt</h2>
+          <div>
+            <h2 className="h1">Send a sequence.<br />Get back a melt</h2>
+            <div className="custom-grid">
               <ul className="ticks">
                 <li>In silico design and predicted ΔTm for every target</li>
                 <li>Wet-lab verification on your instrument model</li>
                 <li>Turnaround: [TURNAROUND]</li>
               </ul>
+              <CustomDesignForm />
             </div>
-            <CustomDesignForm />
           </div>
         </div>
       </section>

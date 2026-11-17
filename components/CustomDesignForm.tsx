@@ -13,8 +13,8 @@ export function CustomDesignForm() {
         setSent(true);
       }}
     >
-      <label><span className="caps">Target region</span><textarea required rows={2} placeholder="Gene, region or sequence" /></label>
-      <label><span className="caps">Variants to resolve</span><input required placeholder="e.g. rs6025" /></label>
+      <label><span className="caps">Target region</span><input required /></label>
+      <label><span className="caps">Variants to resolve</span><input required /></label>
       <label><span className="caps">Work email</span><input required type="email" autoComplete="email" /></label>
       <button className="btn btn-ink btn-block"><span>Request a design</span><span aria-hidden>→</span></button>
     </form>
