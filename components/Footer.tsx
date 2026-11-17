@@ -1,12 +1,11 @@
 import Link from "next/link";
-import { Logo } from "./Header";
 
 export function Footer() {
   return (
     <footer className="site-footer">
       <div className="wrap foot-grid">
         <div>
-          <Logo />
+          <span className="logo" style={{ fontWeight: 700 }}>LookDx</span>
           <p className="small muted">
             [COMPANY NAME]
             <br />
@@ -37,8 +36,8 @@ export function Footer() {
             <li><a href="mailto:hello@example.com">Contact</a></li>
           </ul>
         </div>
+        <p className="ruo">[RUO / IVD STATEMENT]</p>
       </div>
-      <div className="wrap small muted foot-legal">[RUO / IVD STATEMENT]</div>
     </footer>
   );
 }

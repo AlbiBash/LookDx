@@ -2,7 +2,7 @@ import Link from "next/link";
 import { HeroChart } from "@/components/HeroChart";
 import { KitFinder } from "@/components/KitFinder";
 import { CustomDesignForm } from "@/components/CustomDesignForm";
-import { InfoBar } from "@/components/InfoBar";
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "/LookDx";
 
 const steps = [
   { n: 1, t: "Amplify", d: "Primer and probe sets designed so each amplicon lands in its own temperature window. One master mix, one tube." },
@@ -21,10 +21,13 @@ const compat = [
 export default function Home() {
   return (
     <main id="main">
-      <InfoBar items={["HRM primer & probe kits", "Single-tube multiplexing", "Open instrument support", <span className="accent-text" key="s">[RUO / IVD STATUS]</span>]} />
+      <div className="banner" aria-hidden>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={`${BASE}/img/hero-heat.png`} alt="" />
+      </div>
 
       <section className="wrap hero">
-        <h1 className="display">See the difference in every degree.</h1>
+        <h1 className="display">See the difference in every degree</h1>
         <div className="hero-grid">
           <div>
             <p className="lead">Multiplexed targets in a single tube, resolved by melt temperature and read on the real-time instrument you already run.</p>
@@ -37,9 +40,9 @@ export default function Home() {
 
       <section className="wrap section" id="kits">
         <div className="section-grid">
-          <h2 className="caps">01 — Kit finder</h2>
+          <h2 className="caps">01  |  Kit finder</h2>
           <div>
-            <h2 className="h1">Every kit has a signature.</h2>
+            <h2 className="h1">Every kit has a signature</h2>
             <KitFinder />
           </div>
         </div>
@@ -47,7 +50,7 @@ export default function Home() {
 
       <section className="wrap section" id="method">
         <div className="section-grid">
-          <h2 className="caps">02 — Method</h2>
+          <h2 className="caps">02  |  Method</h2>
           <ol className="steps">
             {steps.map((s) => (
               <li key={s.n}>
@@ -62,9 +65,9 @@ export default function Home() {
 
       <section className="wrap section" id="compatibility">
         <div className="section-grid">
-          <h2 className="caps">03 — Compatibility</h2>
+          <h2 className="caps">03  |  Compatibility</h2>
           <div>
-            <h2 className="h1">Runs on the bench you have.</h2>
+            <h2 className="h1">Runs on the bench you have</h2>
             <table className="table">
               <thead><tr><th>Instrument</th><th>HRM software</th><th>Status</th></tr></thead>
               <tbody>
@@ -77,12 +80,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="wrap section" id="custom">
-        <div className="section-grid">
-          <h2 className="caps">04 — Custom design</h2>
+      <section className="band" id="custom">
+        <div className="wrap section-grid">
+          <h2 className="caps">04  |  Custom design</h2>
           <div className="custom-grid">
             <div>
-              <h2 className="h1">Send a sequence. Get back a melt.</h2>
+              <h2 className="h1">Send a sequence.<br />Get back a melt</h2>
               <ul className="ticks">
                 <li>In silico design and predicted ΔTm for every target</li>
                 <li>Wet-lab verification on your instrument model</li>

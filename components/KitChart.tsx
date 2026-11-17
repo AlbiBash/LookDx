@@ -3,15 +3,15 @@ import { useState } from "react";
 import { ChartSvg, type Line } from "./ChartSvg";
 import type { Kit } from "@/lib/kits";
 
-const styles = { wt: "solid", het: "accent", hom: "dashed" } as const;
-
 export function KitChart({ kit }: { kit: Kit }) {
   const [mode, setMode] = useState<"derivative" | "normalised">("derivative");
-  const lines: Line[] = kit.genotypes.map((g) => ({ id: g.id, style: styles[g.id], gauss: g.peaks }));
-  const all = kit.genotypes.flatMap((g) => g.peaks.map((p) => p.tm));
+  const lines: Line[] = kit.series.map((g) => ({ id: g.id, style: g.style, gauss: g.peaks }));
+  const all = kit.series.flatMap((g) => g.peaks.map((p) => p.tm));
   const lo = Math.floor(Math.min(...all) - 5);
+  const hi = Math.ceil(Math.max(...all) + 4);
+  const step = hi - lo > 12 ? 4 : 2;
   const ticks: number[] = [];
-  for (let t = lo; t <= lo + 10; t += 2) ticks.push(t);
+  for (let t = lo; t <= hi; t += step) ticks.push(t);
 
   return (
     <figure className="figure">
@@ -30,11 +30,11 @@ export function KitChart({ kit }: { kit: Kit }) {
         </span>
       </figcaption>
       <div className="axis-label small muted">{mode === "derivative" ? "−dF/dT" : "Fluorescence, normalised"}</div>
-      <ChartSvg lines={lines} mode={mode} active={null} ticks={ticks} tMin={lo} tMax={lo + 10} label={`Reference melt profile for ${kit.name}`} />
+      <ChartSvg lines={lines} mode={mode} active={null} ticks={ticks} tMin={lo} tMax={hi} label={`Reference melt profile for ${kit.name}`} />
       <ul className="legend">
-        {kit.genotypes.map((g) => (
+        {kit.series.map((g) => (
           <li key={g.id}>
-            <span className={`swatch ${styles[g.id]}`} aria-hidden />
+            <span className={`swatch ${g.style}`} aria-hidden />
             <strong>{g.label}</strong>
             <small>
               {g.shape} · {g.tmText}

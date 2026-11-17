@@ -3,14 +3,14 @@ import { pathFor, T_MIN, T_MAX, type Gauss } from "@/lib/curve";
 export type Line = {
   id: string;
   gauss: Gauss[];
-  style: "solid" | "accent" | "dashed" | "grey";
+  style: "solid" | "accent" | "dashed" | "grey" | "purple";
 };
 
 const W = 800;
 const H = 300;
 
 const stroke = (s: Line["style"]) =>
-  s === "accent" ? "var(--accent)" : s === "grey" ? "var(--grey-line)" : "var(--ink)";
+  s === "accent" ? "var(--accent-line)" : s === "purple" ? "var(--purple-line)" : s === "grey" ? "var(--grey-line)" : "var(--ink)";
 
 export function ChartSvg({
   lines,
@@ -52,7 +52,7 @@ export function ChartSvg({
             d={pathFor(l.gauss, W, H - 2, mode, tMin, tMax)}
             fill="none"
             stroke={stroke(l.style)}
-            strokeWidth={2.2}
+            strokeWidth={l.style === "accent" ? 3 : 2.4}
             strokeDasharray={l.style === "dashed" ? "5 4" : undefined}
             opacity={dim ? 0.15 : 1}
             vectorEffect="non-scaling-stroke"
