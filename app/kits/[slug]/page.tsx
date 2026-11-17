@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { getKit, priceText, kits } from "@/lib/kits";
 import { KitChart } from "@/components/KitChart";
 import { AddToQuote } from "@/components/AddToQuote";
-import { InfoBar } from "@/components/InfoBar";
 
 export function generateStaticParams() {
   return kits.map((k) => ({ slug: k.slug }));
@@ -21,14 +20,6 @@ export default async function KitPage({ params }: { params: Promise<{ slug: stri
 
   return (
     <main id="main">
-      <InfoBar
-        items={[
-          <span key="b"><Link href="/kits" className="ul">Kits</Link> / <Link href="/kits" className="ul">{kit.application}</Link></span>,
-          kit.code,
-          kit.format,
-          <span className="accent-text" key="s">[{kit.status} / IVD STATUS]</span>,
-        ]}
-      />
       <section className="wrap hero">
         <h1 className="display display-sm">{kit.name}</h1>
         <div className="hero-grid">
