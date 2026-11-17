@@ -6,7 +6,7 @@
   --grey-light: #b4b4b4;
   --rule-soft: #d9d9d9;
   --accent: #dbfb5b;
-  --accent-line: #b4e100; /* lime as a curve/line colour on white */
+  --accent-line: #aad400; /* lime as a curve/line colour on white */
   --purple: #c9aad6;
   --purple-line: #b063cc;
   --accent-ink: #000000;
@@ -132,7 +132,7 @@ textarea { resize: vertical; border: 1px solid var(--ink); padding: 8px; }
 
 /* method / tables / lists */
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-.step-n { display: block; font-size: 96px; line-height: 1.2; font-weight: 700; letter-spacing: -0.04em; color: var(--accent-line); }
+.step-n { display: block; font-size: 96px; line-height: 1.2; font-weight: 700; letter-spacing: -0.04em; color: var(--grey-light); }
 .steps h3 { font-size: 24px; font-weight: 700; letter-spacing: -0.01em; margin: 12px 0; }
 .steps p { font-size: 15px; line-height: 1.4; max-width: 300px; }
 .table { width: 100%; border-collapse: collapse; font-size: 17px; }
