@@ -7,7 +7,7 @@ export default function Basket() {
   return (
     <main id="main">
       <section className="wrap hero">
-        <h1 className="display">Your quote.</h1>
+        <h1 className="display">Your quote</h1>
         <BasketView />
       </section>
     </main>

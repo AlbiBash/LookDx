@@ -28,7 +28,7 @@ export function Header({ bar }: { bar?: React.ReactNode }) {
         <Logo />
         <nav aria-label="Main">
           {nav.map((n) => (
-            <Link key={n.href} href={n.href} aria-current={path === n.href ? "page" : undefined}>
+            <Link key={n.href} href={n.href} data-label={n.label} aria-current={path === n.href ? "page" : undefined}>
               {n.label}
             </Link>
           ))}

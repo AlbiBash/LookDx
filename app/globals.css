@@ -45,7 +45,9 @@ ul, ol { list-style: none; }
 .logo .dx { color: var(--grey-light); }
 .site-header nav { display: flex; gap: 32px; }
 .site-header nav a { font-size: 14px; font-weight: 400; }
-.site-header nav a:hover, .site-header nav a[aria-current] { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+.site-header nav a { display: inline-flex; flex-direction: column; align-items: center; }
+.site-header nav a::after { content: attr(data-label); font-weight: 700; height: 0; visibility: hidden; overflow: hidden; }
+.site-header nav a:hover, .site-header nav a[aria-current] { font-weight: 700; }
 .info-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; border-top: 1.5px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 8px 0; }
 
 /* buttons */
@@ -120,7 +122,7 @@ textarea { resize: vertical; border: 1px solid var(--ink); padding: 8px; }
 .kit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 32px; }
 .kit-card { display: block; padding: 0 0 32px; margin-bottom: 32px; border-bottom: 1px solid var(--rule-soft); }
 .kit-grid li:nth-last-child(-n+3) .kit-card { border-bottom: 0; margin-bottom: 0; }
-.kit-card:hover h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.kit-card:hover h3 { font-weight: 800; }
 .kit-meta { display: flex; justify-content: space-between; font-size: 12px; text-transform: none; letter-spacing: 0; }
 .kit-meta span:last-child { font-weight: 400; color: var(--grey); }
 .mini { display: block; width: 100%; height: 64px; margin: 12px 0 12px; overflow: visible; }
@@ -195,7 +197,7 @@ textarea { resize: vertical; border: 1px solid var(--ink); padding: 8px; }
 .foot-grid li { padding: 4px 0; font-size: 13px; color: var(--grey); }
 .foot-grid .logo { font-size: 22px; margin-bottom: 6px; }
 .foot-grid .ruo { font-size: 12px; font-weight: 700; color: var(--ink); }
-.foot-grid a:hover { text-decoration: underline; }
+.foot-grid a:hover { font-weight: 700; }
 .foot-legal { display: none; }
 
 @media (max-width: 880px) {

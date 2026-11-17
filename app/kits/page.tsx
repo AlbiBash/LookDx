@@ -9,7 +9,7 @@ export default function Kits() {
   return (
     <main id="main">
       <section className="wrap hero">
-        <h1 className="display">Kits.</h1>
+        <h1 className="display">Kits</h1>
         <div className="section-grid">
           <span />
           <KitFinder />
